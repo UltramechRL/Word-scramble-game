@@ -1,0 +1,33 @@
+import random
+
+word_list = ['laptop', 'bottle', 'phone', 'paper', 'remote', 'teddy']
+score = 0
+
+def jumble_word():
+    letter_list = list(word)
+    random.shuffle(letter_list)
+    join = ''.join(letter_list)
+    print(join)
+
+def hint():
+    print('The first letter of the word is: {}'.format(word[0].upper()))
+
+print("--- Welcome to the scramble game ---")
+print("I will give you a scrambled word and you need to spell the unscrambled word")
+
+for i in range(3):
+    word = random.choice(word_list)
+    jumble_word()
+    
+    want_hint = input("Do you want a hint, type yes or no: ")
+    if want_hint == "yes":
+        hint()
+        
+    guess = input("Guess the word: ")
+    if guess == word:
+        print("Correct!")
+        score = score + 1
+    else:
+        print("Wrong! The word was",word)
+
+print("Game over! Your score is:",score)
